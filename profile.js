@@ -12,37 +12,47 @@ function Profile (name){
 	this.avatar;
 }
 
+function initialize(){
+	console.log('derp!');
+}
+
 //When our user signs in we want to load the page based on their "settings"
 function loadUser(){
 
 	
 }
 
-//this is our function to create a first time user
-//TODO: make this function check for duplicate users!!!!
-function getUserName(event) {
+function checkUserExistence(event){
+	var gandalf = 0;
 	event.preventDefault();
 	profileArray.forEach(function(profile){
-	//console.log('for each says: ' + profile);
-	//move this check to new method
-		/*if(profile['name'] === event.target.userInput.value){
-				console.log('sorry not sorry');
-				return;
+		//disallow camelCase
+		if(profile['name'].toLowerCase() === event.target.userInput.value.toLowerCase()){
+			alert('Sorry that name is taken. Please try a different name.');
+			document.getElementById("inputID").value = '';
 		}
 		});
-*/
+		if (event.target.userInput.value.length > 0) {
+			var userName = event.target.userInput.value;
+			createProfile(userName);
+		}
+	
+}
+
+//this is our function to create a first time user
+function createProfile(userName) {
 		//users must input a name that is at least 2 letters long
-		if(event.target.userInput.value.length < 2){
-			console.log('too small bro');
+		if(userName.length < 2){
+			console.log('User names must be at least two letters long');
 
 		}
 		else{
 			console.log('do you bruh');
-			var user = event.target.userInput.value;
-			console.log(user);
-			var newProfile = new Profile(user);
+			console.log(userName);
+			var newProfile = new Profile(userName);
 			console.log(newProfile);
 			profileArray.push(newProfile);
+			//TODO: Destroy ability to login, maybe create logout button
 		}
 	
 
@@ -54,10 +64,10 @@ function setAvatar(image){
 }
 
 
-form.addEventListener('submit', getUserName);
+form.addEventListener('submit', checkUserExistence);
 
-//here is where we update our users profile every time they make a vote, or create something new to
-//reflect the changes
+//here is where we update our users profile every time they make a vote, or create something new
+// toreflect the changes
 function updateProfile(key, value){
 
 
