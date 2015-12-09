@@ -10,7 +10,7 @@ app.use(function(req, res, next){
  next()
 });
 
-var counter = 1;
+var counter = 3;
 
 var db = {
   reviews: [
@@ -33,13 +33,62 @@ var db = {
           msg: "get a dog!"
         }
       ]
+    },
+    {
+      id: 1,
+      img: 'mainimg/logo1.png',
+      name: "Dog food!",
+      usr: "dogsRule",
+      uvotes: 3,
+      dvotes: 1,
+      comments: [
+        {
+          id: 0,
+          usr: "catscats!",
+          msg: "This rocks! A++"
+        },
+        {
+          id: 1,
+          usr: "dogsdogs!",
+          msg: "get a dog!"
+        }
+      ]
+    },
+    {
+      id: 2,
+      img: 'mainimg/logo1.png',
+      name: "Holy water",
+      usr: "Blah",
+      uvotes: 10,
+      dvotes: 1,
+      comments: [
+        {
+          id: 0,
+          usr: "catscats!",
+          msg: "This rocks! A++"
+        },
+        {
+          id: 1,
+          usr: "dogsdogs!",
+          msg: "get a dog!"
+        }
+      ]
     }
+
   ]
 };
 
 app.get("/reviews", function (req, res){
   res.json(db.reviews);
 })
+
+app.post("/reviews", function (req, res) {
+  var newReviews = req.body;
+  console.log(newReviews);
+  db.reviews = newReviews;
+  res.json({msg: "Upload successful!"});
+})
+
 
 app.listen(3000, function(){
   console.log("Wubba Lubba Dub Dub");
