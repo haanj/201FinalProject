@@ -13,22 +13,31 @@ function Profile (name){
 }
 
 function initialize(){
-	console.log('derp!');
+	if(localStorage){
+		profileArray = JSON.parse(localStorage["profileArray"]);
+	}
 }
 
 //When our user signs in we want to load the page based on their "settings"
-function loadUser(){
+function loadUser(profile){
+	console.log(profile);
+	toggleSubmitButton();
+	//destroy input field
 
-	
 }
 
 function checkUserExistence(event){
-	var gandalf = 0;
+	var inputExists = $('inputID').
+	
 	event.preventDefault();
 	profileArray.forEach(function(profile){
 		//disallow camelCase
 		if(profile['name'].toLowerCase() === event.target.userInput.value.toLowerCase()){
-			alert('Sorry that name is taken. Please try a different name.');
+			//alert('Sorry that name is taken. Please try a different name.');
+			console.log(profile);
+			console.log('I think this sent a profile object????')
+			var profileForLoad = profile;
+			loadUser(profileForLoad);
 			document.getElementById("inputID").value = '';
 		}
 		});
@@ -52,10 +61,9 @@ function createProfile(userName) {
 			var newProfile = new Profile(userName);
 			console.log(newProfile);
 			profileArray.push(newProfile);
-			//TODO: Destroy ability to login, maybe create logout button
+			localStorage["profileArray"] = JSON.stringify(profileArray);
+			loadUser();
 		}
-	
-
 
 }
 
@@ -63,6 +71,23 @@ function setAvatar(image){
 
 }
 
+function logout(){
+	toggleSubmitButton();
+}
+
+//change button value based on our users login status
+function toggleSubmitButton(){
+	var checkButtonValue = $('#submitUserName').text();
+	if(checkButtonValue === 'Submit'){
+	$('#submitUserName').text('Logout');
+	$('#inputID').toggle();
+	}
+	else{
+		$('#submitUserName').text('Submit');
+		$('#inputID').toggle();
+	}
+
+}
 
 form.addEventListener('submit', checkUserExistence);
 
@@ -70,6 +95,6 @@ form.addEventListener('submit', checkUserExistence);
 // toreflect the changes
 function updateProfile(key, value){
 
-
 }
 
+initialize();
