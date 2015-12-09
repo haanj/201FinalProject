@@ -82,6 +82,14 @@ app.get("/reviews", function (req, res){
   res.json(db.reviews);
 })
 
+app.post("/reviews", function (req, res) {
+  var newReviews = req.body;
+  console.log(newReviews);
+  db.reviews = newReviews;
+  res.json({msg: "Upload successful!"});
+})
+
+
 app.listen(3000, function(){
   console.log("Wubba Lubba Dub Dub");
 });
