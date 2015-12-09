@@ -1,38 +1,97 @@
-////12/07
+var delay=3500 //set delay in miliseconds
+var curindex=0
 
-var imageAlbum = [];
+var randomimages = new Array()
 
-function albumLogo(){
+	randomimages[0]="album/logo0.jpg"
+	randomimages[1]="album/logo1.jpg"
+	randomimages[2]="album/logo2.jpg"
+	randomimages[3]="album/logo3.jpg"
+	randomimages[4]="album/logo4.jpg"
+	randomimages[5]="album/logo5.jpg"
+	randomimages[6]="album/logo6.jpg"
+	randomimages[7]="album/logo7.jpg"
+	randomimages[8]="album/logo8.jpg"
+	randomimages[9]="album/logo9.jpg"
+	randomimages[10]="album/logo10.jpg"
+	randomimages[11]="album/logo11.jpg"
+	randomimages[12]="album/logo12.jpg"
+	randomimages[13]="album/logo13.jpg"
+	randomimages[14]="album/logo14.jpg"
+	randomimages[15]="album/logo15.jpg"
+	randomimages[16]="album/logo16.jpg"
+	randomimages[17]="album/logo17.jpg"
+	
+var preload = new Array()
 
-	var counter = 0;
+for (n=0; n<randomimages.length; n++)
+{
+	preload[n]=new Image()
+	preload[n].src=randomimages[n]
+}
 
-	while (counter <=17) {
-		file = 'album/logo' + Math.floor(Math.random() * 17)+'.jpg';
-		imageAlbum.push(file);
-		counter ++;
-	};
-};
+// document.write('<img name="defaultimage" src="'+randomimages[Math.floor(Math.random()*(randomimages.length))]+'">')
+$('#lad').html('<img name="defaultimage" src="'+randomimages[Math.floor(Math.random()*(randomimages.length))]+'">')
+$('#rad').html('<img name="defaultimage" src="'+randomimages[Math.floor(Math.random()*(randomimages.length))]+'">')
+
+function rotateimage()
+{
+
+if (curindex==(tempindex=Math.floor(Math.random()*(randomimages.length)))){
+curindex=curindex==0? 1 : curindex-1
+}
+else
+curindex=tempindex
+
+	document.images.defaultimage.src=randomimages[curindex]
+}
+
+setInterval("rotateimage()",delay)
+
+// $('#lad').html('<img src="'+ final1 +'">');
+// $('#rad').html('<img src="'+ final2 +'">');
 
 
 
 
+// var imageAlbum = [];
+
+// function albumLogo(){
+
+// 	var counter = 0;
+
+// 	while (counter <=17) {
+// 		file = 'album/logo' + Math.floor(Math.random() * 17)+'.jpg';
+// 		imageAlbum.push(file);
+// 		counter ++;
+// 	};
+// };
+
+// function showLogo(){
+
+// 	var seattle1 = Math.floor(Math.random() * 17);
+// 	var seattle2 = Math.floor(Math.random() * 17);
+
+// 	var final1 = imageAlbum[seattle1];
+// 	var final2 = imageAlbum[seattle2];
+
+// 	$('#lad').html('<img src="'+ final1 +'">');
+// 	$('#rad').html('<img src="'+ final2 +'">');
+// };
+
+// albumLogo();
+// showLogo();
 
 
 
-function showLogo(){
+// $submit = 
 
-	var seattle1 = Math.floor(Math.random() * 17);
-	var seattle2 = Math.floor(Math.random() * 17);
 
-	var final1 = imageAlbum[seattle1];
-	var final2 = imageAlbum[seattle2];
+// post = post.concact('<img=src"'+ logo + '".jpg>');
 
-	$('#lad').html('<img src="'+ final1 +'">');
-	$('#rad').html('<img src="'+ final2 +'">');
-};
+// $submit.html('$lad');
+// $submit.html('$rad');
 
-albumLogo();
-showLogo();
 
 ///////////////////////////////////////////////////////
 // var handle;
