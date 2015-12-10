@@ -1,9 +1,10 @@
+
 body {
-  max-width: 80%;
+  max-width: 100%;
   margin: 0 auto;
   background-image: url("mainimg/seattle1.png");
+  background-repeat: repeat;
   background-size: 100%;
-  background-repeat: no-repeat;
 }
 header {
   display: flex;
@@ -17,14 +18,22 @@ h1{
   margin:5px 5px 5px 5px;
   color: #336699;
 }
-button{
-  height: 50px;
-  width: 50px;
+form{
+  margin-top: 40px;
+  margin-right: 40px;
 }
-
+button{
+  height: 22px;
+  width: 145px;
+}
 .mediumLogo {
   height: 100px;
   width: 100px;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+h2{
+  text-align: center;
 }
 .navItem {
   display: inline-block;
@@ -39,7 +48,7 @@ main {
   min-height: 25em;
 }
 aside {
-  max-width: 10%;
+  max-width: 20%;
   background-color: red;
   overflow: auto;
 }
