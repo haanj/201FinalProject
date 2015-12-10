@@ -1,6 +1,6 @@
 $submit = $('#subm');
 
-$submit.html("Testytest");
+$submit.html("Server Down");
 
 var reviews = [];
 
@@ -8,7 +8,7 @@ var reviews = [];
 function getReviews() {
     $.get('http://localhost:3000/reviews', function(data) {
       reviews = data;
-      console.log(reviews);
+      console.log("getting reviews: " + reviews);
       printReviews();
       });
 }
@@ -41,11 +41,11 @@ function printReviews() {
     var score = review.uvotes - review.dvotes;
     var comments = review.comments;
     var post = '';
-    post = post.concat('<div class="reviewPost" id="post' + id + '">');
-    post = post.concat('<img src="'+ img +'">');
-    post = post.concat('<h3>' + name +'</h3>');
-    post = post.concat('<p>Submitted by ' + usr + '</p>');
-    post = post.concat('</div>');
+    post += '<div class="reviewPost" id="post' + id + '">';
+    post +=   '<img class="reviewImg" src="'+ img +'">';
+    post +=   '<h3 class="reviewTitle">' + name +'</h3>';
+    post +=   '<p class="reviewSubmitter">Submitted by ' + usr + '</p>';
+    post += '</div>';
     allReviews = allReviews.concat(post);
 
     // calls function to add comments
@@ -71,12 +71,9 @@ function printReviews() {
   })
 }
 
-function refreshPage(){
-
-}
 
 function addComment(id, newName, newComment){
-  // checks for product that comment belongs to
+  /*** Adds to client's review array
   reviews.forEach(function (review) {
     if (review.id === id){
       review.comments.push({
@@ -85,10 +82,23 @@ function addComment(id, newName, newComment){
         msg: newComment
       });
     }
-    console.log(review);
   })
+  ***/
 
-  postReviews();
+  // v2.0, POSTS to server instead
+  $.ajax({
+    url: 'http://localhost:3000/comments',
+    type: "POST",
+    data: JSON.stringify([id, newName, newComment]),
+    processData: false,
+    contentType: "application/json; charset=UTF-8",
+    complete: function() {
+      console.log('done');
+      getReviews();
+    }
+  });
+
+
 }
 
 // creates html string for user comments

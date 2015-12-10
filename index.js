@@ -89,6 +89,22 @@ app.post("/reviews", function (req, res) {
   res.json({msg: "Upload successful!"});
 })
 
+app.post("/comments", function (req, res) {
+  var thread = req.body[0];
+  var user = req.body[1];
+  var comment = req.body[2];
+
+  //searches for thread with id = thread
+  db.reviews.forEach(function (review){
+    if (review.id === Number(thread)){
+      review.comments.push({id: review.comments.length, usr: user, msg: comment});
+      //console.log(review.comments);
+    }
+    console.log(db.reviews.comments);
+  })
+  res.json({msg: "Upload successful!"});
+  console.log(user + " says: " + comment);
+})
 
 app.listen(3000, function(){
   console.log("Wubba Lubba Dub Dub");
