@@ -21,7 +21,7 @@ var randomimages = new Array()
 	randomimages[15]="album/logo15.jpg"
 	randomimages[16]="album/logo16.jpg"
 	randomimages[17]="album/logo17.jpg"
-	
+
 var preload = new Array()
 
 for (n=0; n<randomimages.length; n++)
@@ -84,7 +84,7 @@ setInterval("rotateimage()",delay)
 
 
 
-// $submit = 
+// $submit =
 
 
 // post = post.concact('<img=src"'+ logo + '".jpg>');
@@ -113,7 +113,7 @@ setInterval("rotateimage()",delay)
 // <script language="JavaScript">
 // var i = 0;
 // var path = new Array();
- 
+
 // // LIST OF IMAGES
 // path[0] = "logo0.jpg";
 // path[1] = "logo1.jpg";
