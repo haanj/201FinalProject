@@ -31,8 +31,8 @@ for (n=0; n<randomimages.length; n++)
 }
 
 // document.write('<img name="defaultimage" src="'+randomimages[Math.floor(Math.random()*(randomimages.length))]+'">')
-$('#lad').html('<img name="defaultimage" src="'+randomimages[Math.floor(Math.random()*(randomimages.length))]+'">')
-$('#rad').html('<img name="defaultimage" src="'+randomimages[Math.floor(Math.random()*(randomimages.length))]+'">')
+$('#lad').html('<img name="defaultimage" class="adClass" src="'+randomimages[Math.floor(Math.random()*(randomimages.length))]+'">')
+$('#rad').html('<img name="defaultimage" class="adClass" src="'+randomimages[Math.floor(Math.random()*(randomimages.length))]+'">')
 
 function rotateimage()
 {
