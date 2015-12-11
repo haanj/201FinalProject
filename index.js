@@ -75,6 +75,21 @@ var db = {
       ]
     }
 
+  ],
+  profileArray: [
+        {
+          name:'joshua'
+        }, 
+        {
+          name:'justin'
+        }, 
+        {
+          name:'michael'
+        }, 
+        {
+          name:'phil'
+        }
+
   ]
 };
 
@@ -82,11 +97,22 @@ app.get("/reviews", function (req, res){
   res.json(db.reviews);
 })
 
+app.get("/profiles", function (req, res) {
+  res.json(db.profileArray);
+})
+
 app.post("/reviews", function (req, res) {
   var newReviews = req.body;
   console.log(newReviews);
   db.reviews = newReviews;
   res.json({msg: "Upload successful!"});
+})
+
+app.post("/profiles", function (req, res){
+  var newProfile = req.body;
+  console.log(newProfile);
+  db.profileArray = newProfile;
+  console.log('array added');
 })
 
 
