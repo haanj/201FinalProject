@@ -3,6 +3,10 @@ var curindex=0
 
 var randomimages = new Array()
 
+
+//for loop start
+//randomimages[i] = "album/logo" + i  +
+//".jpg"
 	randomimages[0]="album/logo0.jpg"
 	randomimages[1]="album/logo1.jpg"
 	randomimages[2]="album/logo2.jpg"
@@ -31,8 +35,8 @@ for (n=0; n<randomimages.length; n++)
 }
 
 // document.write('<img name="defaultimage" src="'+randomimages[Math.floor(Math.random()*(randomimages.length))]+'">')
-$('#lad').html('<img name="defaultimage" class="adClass" src="'+randomimages[Math.floor(Math.random()*(randomimages.length))]+'">')
-$('#rad').html('<img name="defaultimage" class="adClass" src="'+randomimages[Math.floor(Math.random()*(randomimages.length))]+'">')
+$('#lad').html('<img name="defaultimage" src="'+randomimages[Math.floor(Math.random()*(randomimages.length))]+'">')
+$('#rad').html('<img name="defaultimage" src="'+randomimages[Math.floor(Math.random()*(randomimages.length))]+'">')
 
 function rotateimage()
 {
@@ -47,6 +51,13 @@ curindex=tempindex
 }
 
 setInterval("rotateimage()",delay)
+
+////////////////////////
+
+var adsButton = document.getElementById('adsButton').addEventListener('click', function(){
+	alert(" No Ads for a day");
+}, false);
+
 
 // $('#lad').html('<img src="'+ final1 +'">');
 // $('#rad').html('<img src="'+ final2 +'">');
