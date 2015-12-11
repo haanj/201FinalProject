@@ -1,4 +1,4 @@
-var profileArray = [{name:'john'}, {name:'sally'}, {name:'michael'}];
+var profileArray = [];
 
 var form = document.getElementById('formstruct');
 
@@ -13,9 +13,12 @@ function Profile (name){
 }
 
 function initialize(){
-	if(localStorage){
-		profileArray = JSON.parse(localStorage["profileArray"]);
-	}
+		//get profile list from database
+		$.get('http://localhost:3000/profiles', function(data){
+			profileArray = data;
+			console.log('got profileArray from server!');
+		});
+	
 }
 
 //When our user signs in we want to load the page based on their "settings"
@@ -27,7 +30,7 @@ function loadUser(profile){
 }
 
 function checkUserExistence(event){
-	var inputExists = $('inputID').
+	
 	
 	event.preventDefault();
 	profileArray.forEach(function(profile){
@@ -51,7 +54,7 @@ function checkUserExistence(event){
 //this is our function to create a first time user
 function createProfile(userName) {
 		//users must input a name that is at least 2 letters long
-		if(userName.length < 2){
+		if(userName.length < 4){
 			console.log('User names must be at least two letters long');
 
 		}
@@ -61,7 +64,17 @@ function createProfile(userName) {
 			var newProfile = new Profile(userName);
 			console.log(newProfile);
 			profileArray.push(newProfile);
-			localStorage["profileArray"] = JSON.stringify(profileArray);
+			//post new profile to db
+			$.ajax({
+      				url: 'http://localhost:3000/profiles',
+				    type: "POST",
+				    data: JSON.stringify(profileArray),
+				    processData: false,
+				    contentType: "application/json; charset=UTF-8",
+				    complete: function() {
+				    console.log('done');
+				    }
+    		});
 			loadUser();
 		}
 
@@ -78,8 +91,9 @@ function logout(){
 //change button value based on our users login status
 function toggleSubmitButton(){
 	var checkButtonValue = $('#submitUserName').text();
-	if(checkButtonValue === 'Submit'){
-	$('#submitUserName').text('Logout');
+	if(checkButtonValue === 'Log In'){
+	//$('#submitUserName').text('Logout');
+	$('#submitUserName').toggle();
 	$('#inputID').toggle();
 	}
 	else{
@@ -89,7 +103,8 @@ function toggleSubmitButton(){
 
 }
 
-form.addEventListener('submit', checkUserExistence);
+form.addEventListener('onclick', checkUserExistence);
+
 
 //here is where we update our users profile every time they make a vote, or create something new
 // toreflect the changes

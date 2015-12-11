@@ -176,6 +176,4 @@ function startUp() {
   getReviews();
 }
 
-
-
 $(document).ready(startUp);
