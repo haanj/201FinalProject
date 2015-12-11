@@ -48,9 +48,21 @@ main {
   min-height: 25em;
 }
 aside {
-  max-width: 20%;
-  background-color: red;
+  width: 15%;
   overflow: auto;
+}
+#lad img {
+  height: 25em;
+  width: 100%;
+  position: relative;
+}
+#rad img{
+  height: 25em;
+  width: 100%;
+  position: relative;
+}
+#rbu{
+  float: right;
 }
 article {
 }
