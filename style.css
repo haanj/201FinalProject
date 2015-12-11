@@ -47,22 +47,23 @@ main {
   max-width: 100%;
   min-height: 25em;
 }
-aside {
-  width: 15%;
-  overflow: auto;
-}
+
 #lad img {
-  height: 25em;
-  width: 100%;
-  position: relative;
+  height: 50vh;
+  width: 17%;
+  right: 0;
+  position: fixed;
+
 }
 #rad img{
-  height: 25em;
-  width: 100%;
-  position: relative;
+  height: 50vh;
+  width: 17%;
+  position: fixed;
+
 }
 #rbu{
   float: right;
 }
 article {
 }
+
