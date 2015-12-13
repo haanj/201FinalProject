@@ -31,13 +31,12 @@ function loadUser(profileObject){
 }
 
 function checkUserExistence(event){
-	//event.preventDefault();
 	profileArray.forEach(function(profile){
 		//disallow camelCase
 		if(profile['name'].toLowerCase() === event.target.userInput.value.toLowerCase()){
 			//alert('Sorry that name is taken. Please try a different name.');
 			console.log(profile);
-			console.log('I think this sent a profile object????')
+			console.log('Sent a pre-existing profile')
 			var profileForLoad = profile;
 			loadUser(profileForLoad);
 			
@@ -58,7 +57,7 @@ function createProfile(userName) {
 
 		}
 		else{
-			console.log('do you bruh');
+			console.log('Login accepted');
 			console.log(userName);
 			var newProfile = new Profile(userName);
 			console.log(newProfile);
@@ -123,5 +122,4 @@ function destroyLogoutAddLogin(){
 function updateProfile(key, value){
 
 }
-
 initialize();
