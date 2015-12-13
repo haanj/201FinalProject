@@ -30,7 +30,22 @@ function updateComments(){
   });
 }
 
+function newPost(img, name) {
+  var usr = JSON.parse(localStorage["user-name"]);
+  $.ajax({
+  url: 'http://localhost:3000/reviews',
+  type: "POST",
+  data: JSON.stringify([usr, img, name]),
+  processData: false,
+  contentType: "application/json; charset=UTF-8",
+  complete: function() {
+    console.log('done');
+    getReviews();
+    }
+  });
+}
 
+/*
 // POST reviews to server
 function postReviews() {
     $.ajax({
@@ -45,6 +60,7 @@ function postReviews() {
       }
     });
 }
+*/
 
 // prints all the reviews on the page
 function printReviews() {

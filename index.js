@@ -94,13 +94,13 @@ var db = {
   profileArray: [
         {
           name:'joshua'
-        }, 
+        },
         {
           name:'justin'
-        }, 
+        },
         {
           name:'michael'
-        }, 
+        },
         {
           name:'phil'
         }
@@ -117,8 +117,13 @@ app.get("/profiles", function (req, res) {
 })
 
 app.post("/reviews", function (req, res) {
-  var newReviews = req.body;
-  db.reviews = newReviews;
+  var newReview = req.body;
+  var submitter = newReview[0];
+  var img = newReview[1];
+  var name = newReview[2];
+
+  db.reviews.push({id: db.reviews.length, img: img, usr: submitter, name: name, uvotes: 1, dvotes: 0, comments: []});
+  console.log(db.reviews);
   res.json({msg: "Upload successful!"});
 })
 
