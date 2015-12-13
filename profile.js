@@ -1,6 +1,6 @@
 var profileArray = [];
 
-var form = document.getElementById('formstruct');
+//var form = document.getElementById('formstruct');
 
 //Profile constructor with applicable key, value pairs for recording what the user has voted on
 //and what the user has posted themselves or commented on. Also a way to store thier avatar image
@@ -22,17 +22,16 @@ function initialize(){
 }
 
 //When our user signs in we want to load the page based on their "settings"
-function loadUser(profile){
-	console.log(profile);
-	toggleSubmitButton();
+function loadUser(profileObject){
+	console.log('profile loaded');
+	var accountName = (profileObject['name']);
+	destroyLoginAddLogout(accountName);
 	//destroy input field
 
 }
 
 function checkUserExistence(event){
-	
-	
-	event.preventDefault();
+	//event.preventDefault();
 	profileArray.forEach(function(profile){
 		//disallow camelCase
 		if(profile['name'].toLowerCase() === event.target.userInput.value.toLowerCase()){
@@ -41,7 +40,7 @@ function checkUserExistence(event){
 			console.log('I think this sent a profile object????')
 			var profileForLoad = profile;
 			loadUser(profileForLoad);
-			document.getElementById("inputID").value = '';
+			
 		}
 		});
 		if (event.target.userInput.value.length > 0) {
@@ -72,39 +71,52 @@ function createProfile(userName) {
 				    processData: false,
 				    contentType: "application/json; charset=UTF-8",
 				    complete: function() {
-				    console.log('done');
+				    console.log('profile saved to server');
 				    }
     		});
-			loadUser();
+			loadUser(newProfile);
 		}
 
 }
 
 function setAvatar(image){
+	
+}
+
+function destroyLoginAddLogout(name){
+	$('.profileButton').text('Logout');
+	$('#inputID').val('');
+	$('#inputID').hide();
+	console.log('Button changed to Logout');
+	$('#userToggle').text('Welcome, ' + name);
+}
+
+function destroyLogoutAddLogin(){
+	console.log('Button changed to Login');
+	$('.profileButton').text('Login');
+	$('#inputID').show();
+	$('#userToggle').text('Username:')
 
 }
 
-function logout(){
-	toggleSubmitButton();
-}
-
-//change button value based on our users login status
-function toggleSubmitButton(){
-	var checkButtonValue = $('#submitUserName').text();
-	if(checkButtonValue === 'Log In'){
-	//$('#submitUserName').text('Logout');
-	$('#submitUserName').toggle();
-	$('#inputID').toggle();
-	}
-	else{
-		$('#submitUserName').text('Submit');
-		$('#inputID').toggle();
-	}
-
-}
-
-form.addEventListener('onclick', checkUserExistence);
-
+	$('#formstruct').submit(function(event){
+		console.log('You clicked the button')
+		var checkButtonStatus = $('.profileButton').html();
+		console.log('html value: ' + checkButtonStatus);
+		if(checkButtonStatus === 'Login'){
+			event.preventDefault();
+			console.log('the html value matched "Login" ');
+			checkUserExistence(event);
+		}
+		else if(checkButtonStatus === 'Logout'){
+			event.preventDefault();
+			console.log('the html value matched "Logout"');
+			destroyLogoutAddLogin();
+		}
+		else{
+			console.log('the html value did not match');
+		}
+	});
 
 //here is where we update our users profile every time they make a vote, or create something new
 // toreflect the changes
