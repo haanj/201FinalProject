@@ -112,6 +112,9 @@ function printReviews() {
 
 }
 
+// function refreshCommentThread(commentThread)
+
+
 
 function addComment(id, newName, newComment){
   /*** Adds to client's review array
