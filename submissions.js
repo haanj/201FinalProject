@@ -78,7 +78,7 @@ function printReviews() {
     post += '</div>';
     post += '<button class="showHide" id="showHide' + id + '">Comments</button>'
     post += '<div class="commentThread" id="commentThread' + id + '" style="display:none">';
-    post += '<div class="allComments">'
+    post += '<div class="allComments" id="allComments' + id + '">'
 
     allReviews = allReviews.concat(post);
 
@@ -96,7 +96,13 @@ function printReviews() {
     console.log(event.target.name);
 
     // Gets necessary information from fields to add new comment
-    var newName = event.target.userName.value;
+
+    if(!localStorage["user-name"])
+      {
+        var newName = event.target.userName.value;
+      } else {
+        var newName = JSON.parse(localStorage["user-name"]);
+      }
     var newComment = event.target.commentField.value;
     var newId = Number(event.target.name.slice(10)); //ID of the corresponding product comment thread
 
@@ -116,10 +122,9 @@ function printReviews() {
 // refreshes comment thread by id
 function refreshCommentThread(commentThreadId){
   $.get('http://localhost:3000/reviews', function (data) {
-
     reviews = data;
     var post = '';
-    $newCommentThread = $("#commentThread" + commentThreadId);
+    $newCommentThread = $("#allComments" + commentThreadId);
     console.log($newCommentThread);
 
     // gets review by id
@@ -127,7 +132,6 @@ function refreshCommentThread(commentThreadId){
       if (review.id === commentThreadId){
         console.log ("this is review " + review.id);
         console.log(review.comments);
-        post += '<div class="allComments">'
 
         review.comments.forEach(function(comment){
           var usr = comment.usr;
@@ -137,16 +141,10 @@ function refreshCommentThread(commentThreadId){
           post +=   '<p class = "commentComment">' + msg + '</p>';
           post += '</div>';
         })
-
-        post += '</div>'
-        post += '<form action class="newComment" name="newComment' + commentThreadId + '">';
-        post +=   '<input type="text" name="userName" value="username">';
-        post +=   '<input type="text" name="commentField" value="comment blah blah blah">';
-        post +=   '<input type="submit" value="Comment">';
-        post += '</form>';
       }
     })
     $newCommentThread.html(post);
+
 
   });
 }
