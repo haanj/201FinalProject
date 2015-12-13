@@ -1,4 +1,5 @@
 
+
 body {
   max-width: 100%;
   margin: 0 auto;
@@ -6,11 +7,13 @@ body {
   background-repeat: repeat;
   background-size: 100%;
 }
+
 header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
+
 h1{
   text-align: center;
   font-weight: bold;
@@ -18,27 +21,33 @@ h1{
   margin:5px 5px 5px 5px;
   color: #336699;
 }
+
 form{
   margin-top: 40px;
   margin-right: 40px;
 }
+
 button{
   height: 22px;
   width: 145px;
 }
+
 .mediumLogo {
   height: 100px;
   width: 100px;
   margin-top: 20px;
   margin-left: 20px;
 }
+
 h2{
   text-align: center;
 }
+
 .navItem {
   display: inline-block;
   padding: 2em;
 }
+
 main {
   display: flex;
   flex-direction: row;
@@ -64,6 +73,13 @@ main {
 #rbu{
   float: right;
 }
+
 article {
+
+}
+
+.allComments {
+  height: 200px;
+  overflow: auto;
 }
 
