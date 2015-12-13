@@ -1,7 +1,22 @@
-var express = require('express');
+
+
 var bodyParser = require('body-parser');
+
+var express = require('express');
 var app = express();
 app.use(bodyParser.json());
+
+/*
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
+io.on('connection', function(socket){
+  console.log('a user connected');
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });
+});
+*/
 
 app.use(function(req, res, next){
  res.header("Access-Control-Allow-Origin", "*")
@@ -75,6 +90,21 @@ var db = {
       ]
     }
 
+  ],
+  profileArray: [
+        {
+          name:'joshua'
+        }, 
+        {
+          name:'justin'
+        }, 
+        {
+          name:'michael'
+        }, 
+        {
+          name:'phil'
+        }
+
   ]
 };
 
@@ -82,13 +112,37 @@ app.get("/reviews", function (req, res){
   res.json(db.reviews);
 })
 
+app.get("/profiles", function (req, res) {
+  res.json(db.profileArray);
+})
+
 app.post("/reviews", function (req, res) {
   var newReviews = req.body;
-  console.log(newReviews);
   db.reviews = newReviews;
   res.json({msg: "Upload successful!"});
 })
 
+app.post("/comments", function (req, res) {
+  var thread = req.body[0];
+  var user = req.body[1];
+  var comment = req.body[2];
+
+  //searches for thread with id = thread
+  db.reviews.forEach(function (review){
+    if (review.id === Number(thread)){
+      review.comments.push({id: review.comments.length, usr: user, msg: comment});
+      //console.log(review.comments);
+    }
+  })
+  res.json({msg: "Upload successful!"});
+})
+
+app.post("/profiles", function (req, res){
+  var newProfile = req.body;
+  console.log(newProfile);
+  db.profileArray = newProfile;
+  console.log('array added');
+})
 
 app.listen(3000, function(){
   console.log("Wubba Lubba Dub Dub");

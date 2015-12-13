@@ -1,3 +1,4 @@
+
 var delay=3500 //set delay in miliseconds
 var curindex=0
 
@@ -35,19 +36,21 @@ for (n=0; n<randomimages.length; n++)
 }
 
 // document.write('<img name="defaultimage" src="'+randomimages[Math.floor(Math.random()*(randomimages.length))]+'">')
-$('#lad').html('<img name="defaultimage" class="adClass" src="'+randomimages[Math.floor(Math.random()*(randomimages.length))]+'">')
-$('#rad').html('<img name="defaultimage" class="adClass" src="'+randomimages[Math.floor(Math.random()*(randomimages.length))]+'">')
+$('#lad').html('<img name="leftimage" class="adClass" src="'+randomimages[Math.floor(Math.random()*(randomimages.length))]+'">')
+$('#rad').html('<img name="rightimage" class="adClass" src="'+randomimages[Math.floor(Math.random()*(randomimages.length))]+'">')
 
 function rotateimage()
 {
-
-if (curindex==(tempindex=Math.floor(Math.random()*(randomimages.length)))){
-curindex=curindex==0? 1 : curindex-1
-}
-else
-curindex=tempindex
-
-	document.images.defaultimage.src=randomimages[curindex]
+  console.log('rotate image called')
+  if (curindex==(tempindex=Math.floor(Math.random()*(randomimages.length)))){
+    curindex=curindex==0? 1 : curindex-1
+  }
+  else {
+    curindex=tempindex
+  }
+  console.log(document.images)
+  document.images.leftimage.src=randomimages[curindex]
+  document.images.rightimage.src=randomimages[(curindex + 1) % document.images.length]
 }
 
 setInterval("rotateimage()",delay)

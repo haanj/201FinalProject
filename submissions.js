@@ -1,17 +1,47 @@
-$submit = $('#subm');
 
-$submit.html("Testytest");
+$submit = $('#subm');
+$submit.html("Server Down");
 
 var reviews = [];
 
 // GET request to pull current reviews
 function getReviews() {
-    $.get('http://localhost:3000/reviews', function(data) {
-      reviews = data;
-      console.log(reviews);
-      printReviews();
-      });
+  $.get('http://localhost:3000/reviews', function (data) {
+    reviews = data;
+    printReviews();
+    });
 }
+
+/*
+function updateComments(){
+  var newReviews = [];
+  $.get('http://localhost:3000/reviews', function (data) {
+    console.log("data is: ");
+    console.log(data);
+
+    newReviews = data;
+
+    console.log("newReviews is: ");
+    console.log(newReviews);
+    reviews.forEach(function (review){
+      newReviews.forEach(function (newReview){
+        if (review.id === newReview.id){
+          if (newReview.comments.length > review.comments.length) {
+            var newCommentId = newReview.comments.length;
+            var newComment = newReview.comments[newCommentId];
+            var post = '';
+            post += '<div class="comment">';
+            post +=   '<h4 class="userComment">' + newComment.usr + ' says:</h4>';
+            post +=   '<p class = "comment">' + newComment.msg + '</p>';
+            post += '</div>';
+            $('#commentThread'+(newCommentId - 1)).append(post);
+          }
+        }
+      })
+    })
+  });
+}
+*/
 
 // POST reviews to server
 function postReviews() {
@@ -41,11 +71,15 @@ function printReviews() {
     var score = review.uvotes - review.dvotes;
     var comments = review.comments;
     var post = '';
-    post = post.concat('<div class="reviewPost" id="post' + id + '">');
-    post = post.concat('<img src="'+ img +'">');
-    post = post.concat('<h3>' + name +'</h3>');
-    post = post.concat('<p>Submitted by ' + usr + '</p>');
-    post = post.concat('</div>');
+    post += '<div class="reviewPost" id="post' + id + '">';
+    post +=   '<img class="reviewImg" src="'+ img +'">';
+    post +=   '<h3 class="reviewTitle">' + name +'</h3>';
+    post +=   '<p class="reviewSubmitter">Submitted by ' + usr + '</p>';
+    post += '</div>';
+    post += '<button class="showHide" id="showHide' + id + '">Comments</button>'
+    post += '<div class="commentThread" id="commentThread' + id + '" style="display:none">';
+    post += '<div class="allComments">'
+
     allReviews = allReviews.concat(post);
 
     // calls function to add comments
@@ -69,14 +103,22 @@ function printReviews() {
     //calls function to add new comment
     addComment(newId, newName, newComment);
   })
+
+  // adds event listener to show/hide comments
+  $showHide = $('.showHide');
+  $showHide.click(function (event){
+    var clickId = Number(event.target.id.slice(8));
+    $(('#commentThread'+clickId)).toggle();
+  });
+
 }
 
-function refreshPage(){
+// function refreshCommentThread(commentThread)
 
-}
+
 
 function addComment(id, newName, newComment){
-  // checks for product that comment belongs to
+  /*** Adds to client's review array
   reviews.forEach(function (review) {
     if (review.id === id){
       review.comments.push({
@@ -85,10 +127,23 @@ function addComment(id, newName, newComment){
         msg: newComment
       });
     }
-    console.log(review);
   })
+  ***/
 
-  postReviews();
+  // v2.0, POSTS to server instead
+  $.ajax({
+    url: 'http://localhost:3000/comments',
+    type: "POST",
+    data: JSON.stringify([id, newName, newComment]),
+    processData: false,
+    contentType: "application/json; charset=UTF-8",
+    complete: function() {
+      console.log('done');
+      getReviews();
+    }
+  });
+
+
 }
 
 // creates html string for user comments
@@ -100,16 +155,19 @@ function stringComments(review) {
     var usr = comment.usr;
     var msg = comment.msg;
     post += '<div class="comment">';
-    post +=   '<h4>' + usr + ' says:</h4>';
-    post +=   '<p>' + msg + '</p>';
+    post +=   '<h4 class="userComment">' + usr + ' says:</h4>';
+    post +=   '<p class = "commentComment">' + msg + '</p>';
     post += '</div>';
   })
 
+  post += '</div>'
   post += '<form action class="newComment" name="newComment' + id + '">';
-  post +=   '<input type="text" name="userName" value="test">';
-  post +=   '<input type="text" name="commentField">';
+  post +=   '<input type="text" name="userName" value="username">';
+  post +=   '<input type="text" name="commentField" value="comment blah blah blah">';
   post +=   '<input type="submit" value="Comment">';
   post += '</form>';
+  post += '</div>';
+
   return post;
 }
 
@@ -117,7 +175,5 @@ function stringComments(review) {
 function startUp() {
   getReviews();
 }
-
-
 
 $(document).ready(startUp);
