@@ -98,12 +98,10 @@ function printReviews() {
     event.preventDefault();
     console.log(event.target.userName.value + ": " + event.target.commentField.value);
     console.log(event.target.name);
-
     // Gets necessary information from fields to add new comment
-
     if(!localStorage["user-name"])
       {
-        var newName = event.target.userName.value;
+        alert ("You need to log in first!");
       } else {
         var newName = JSON.parse(localStorage["user-name"]);
       }
