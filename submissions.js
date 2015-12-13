@@ -76,7 +76,8 @@ function printReviews() {
     post +=   '<p class="reviewSubmitter">Submitted by ' + usr + '</p>';
     post += '</div>';
     post += '<button class="showHide" id="showHide' + id + '">Comments</button>'
-    post += '<div class="commentThread" id="commentThread' + id + '">';
+    post += '<div class="commentThread" id="commentThread' + id + '" style="display:none">';
+    post += '<div class="allComments">'
 
     allReviews = allReviews.concat(post);
 
@@ -155,6 +156,7 @@ function stringComments(review) {
     post += '</div>';
   })
 
+  post += '</div>'
   post += '<form action class="newComment" name="newComment' + id + '">';
   post +=   '<input type="text" name="userName" value="username">';
   post +=   '<input type="text" name="commentField" value="comment blah blah blah">';
