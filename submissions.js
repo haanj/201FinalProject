@@ -12,36 +12,24 @@ function getReviews() {
     });
 }
 
-/*
+
 function updateComments(){
   var newReviews = [];
   $.get('http://localhost:3000/reviews', function (data) {
-    console.log("data is: ");
-    console.log(data);
-
     newReviews = data;
 
-    console.log("newReviews is: ");
-    console.log(newReviews);
     reviews.forEach(function (review){
       newReviews.forEach(function (newReview){
         if (review.id === newReview.id){
           if (newReview.comments.length > review.comments.length) {
-            var newCommentId = newReview.comments.length;
-            var newComment = newReview.comments[newCommentId];
-            var post = '';
-            post += '<div class="comment">';
-            post +=   '<h4 class="userComment">' + newComment.usr + ' says:</h4>';
-            post +=   '<p class = "comment">' + newComment.msg + '</p>';
-            post += '</div>';
-            $('#commentThread'+(newCommentId - 1)).append(post);
+            refreshCommentThread(review.id);
           }
         }
       })
     })
   });
 }
-*/
+
 
 // POST reviews to server
 function postReviews() {
@@ -211,3 +199,5 @@ function startUp() {
 }
 
 $(document).ready(startUp);
+
+setInterval("updateComments()", 500);
