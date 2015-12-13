@@ -1,7 +1,20 @@
-var express = require('express');
 var bodyParser = require('body-parser');
+
+var express = require('express');
 var app = express();
 app.use(bodyParser.json());
+
+/*
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
+io.on('connection', function(socket){
+  console.log('a user connected');
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });
+});
+*/
 
 app.use(function(req, res, next){
  res.header("Access-Control-Allow-Origin", "*")
@@ -84,7 +97,6 @@ app.get("/reviews", function (req, res){
 
 app.post("/reviews", function (req, res) {
   var newReviews = req.body;
-  console.log(newReviews);
   db.reviews = newReviews;
   res.json({msg: "Upload successful!"});
 })
@@ -100,10 +112,8 @@ app.post("/comments", function (req, res) {
       review.comments.push({id: review.comments.length, usr: user, msg: comment});
       //console.log(review.comments);
     }
-    console.log(db.reviews.comments);
   })
   res.json({msg: "Upload successful!"});
-  console.log(user + " says: " + comment);
 })
 
 app.listen(3000, function(){
