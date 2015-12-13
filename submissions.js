@@ -31,16 +31,18 @@ function updateComments(){
 }
 
 function newPost(img, name) {
+  alert(img + name);
   var usr = JSON.parse(localStorage["user-name"]);
   $.ajax({
-  url: 'http://localhost:3000/reviews',
-  type: "POST",
-  data: JSON.stringify([usr, img, name]),
-  processData: false,
-  contentType: "application/json; charset=UTF-8",
-  complete: function() {
-    console.log('done');
-    getReviews();
+    url: 'http://localhost:3000/reviews',
+    type: "POST",
+    //data: JSON.stringify([usr, img, name]),
+    data: "{}",
+    processData: false,
+    contentType: "application/json; charset=UTF-8",
+    complete: function(x, y) {
+      console.log('done');
+      startUp();
     }
   });
 }
@@ -210,6 +212,11 @@ function stringComments(review) {
 
 function startUp() {
   getReviews();
+
+  $('#newReview').submit(function (event){
+    newPost(event.target.imgURL.value, event.target.newTitle.value);
+  })
+
 }
 
 $(document).ready(startUp);
