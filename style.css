@@ -20,8 +20,12 @@ h1{
   font-size: 100px;
   margin:5px 5px 5px 5px;
   color: #336699;
+  font-style: italic;
+  font-family: Papyrus,fantasy;
 }
-
+#userToggle{
+  margin-bottom: .1px;
+}
 form{
   margin-top: 40px;
   margin-right: 40px;
@@ -31,7 +35,9 @@ button{
   height: 22px;
   width: 145px;
 }
-
+button:hover{
+    background-color: red;
+}
 .mediumLogo {
   height: 100px;
   width: 100px;
@@ -62,27 +68,44 @@ main {
   width: 17%;
   right: 0;
   position: fixed;
-
+  background-color: white;
+  opacity: .50;
+}
+#lad img:hover{
+  opacity: 1.0;
 }
 #rad img{
   height: 50vh;
   width: 17%;
   position: fixed;
-
+  background-color: white;
+  opacity: .50;
+}
+#rad img:hover{
+  opacity: 1.0;
 }
 #rbu{
   float: right;
 }
 
 article {
-  font-size: 50px;
+  font-size: 30px;
+  font-family: monospace;
 }
 
 p{
-  font-size: 30px;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .allComments {
   height: 200px;
   overflow: auto;
+}
+#menu{
+  direction: rtl;
+}
+.menuHyp {
+  height: 20px;
+  width: 20px;
 }
