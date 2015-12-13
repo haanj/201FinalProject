@@ -113,7 +113,43 @@ function printReviews() {
 
 }
 
-// function refreshCommentThread(commentThread)
+// refreshes comment thread by id
+function refreshCommentThread(commentThreadId){
+  $.get('http://localhost:3000/reviews', function (data) {
+
+    reviews = data;
+    var post = '';
+    $newCommentThread = $("#commentThread" + commentThreadId);
+    console.log($newCommentThread);
+
+    // gets review by id
+    reviews.forEach(function(review){
+      if (review.id === commentThreadId){
+        console.log ("this is review " + review.id);
+        console.log(review.comments);
+        post += '<div class="allComments">'
+
+        review.comments.forEach(function(comment){
+          var usr = comment.usr;
+          var msg = comment.msg;
+          post += '<div class="comment">';
+          post +=   '<h4 class="userComment">' + usr + ' says:</h4>';
+          post +=   '<p class = "commentComment">' + msg + '</p>';
+          post += '</div>';
+        })
+
+        post += '</div>'
+        post += '<form action class="newComment" name="newComment' + commentThreadId + '">';
+        post +=   '<input type="text" name="userName" value="username">';
+        post +=   '<input type="text" name="commentField" value="comment blah blah blah">';
+        post +=   '<input type="submit" value="Comment">';
+        post += '</form>';
+      }
+    })
+    $newCommentThread.html(post);
+
+  });
+}
 
 
 
@@ -139,7 +175,7 @@ function addComment(id, newName, newComment){
     contentType: "application/json; charset=UTF-8",
     complete: function() {
       console.log('done');
-      getReviews();
+      refreshCommentThread(id);
     }
   });
 
