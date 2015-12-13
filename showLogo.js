@@ -1,3 +1,4 @@
+
 var delay=3500 //set delay in miliseconds
 var curindex=0
 

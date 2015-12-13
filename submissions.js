@@ -1,3 +1,4 @@
+
 $submit = $('#subm');
 $submit.html("Server Down");
 
