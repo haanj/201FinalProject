@@ -36,8 +36,8 @@ function newPost(img, name) {
   $.ajax({
     url: 'http://localhost:3000/reviews',
     type: "POST",
-    //data: JSON.stringify([usr, img, name]),
-    data: "{}",
+    data: JSON.stringify([usr, img, name]),
+    //data: "{}",
     processData: false,
     contentType: "application/json; charset=UTF-8",
     complete: function(x, y) {
