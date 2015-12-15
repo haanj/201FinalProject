@@ -214,6 +214,7 @@ function startUp() {
   getReviews();
 
   $('#newReview').submit(function (event){
+    event.preventDefault();
     newPost(event.target.imgURL.value, event.target.newTitle.value);
   })
 
