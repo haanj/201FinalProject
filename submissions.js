@@ -31,7 +31,7 @@ function updateComments(){
 }
 
 function newPost(img, name) {
-  alert(img + name);
+  console.log(img + name);
   var usr = JSON.parse(localStorage["user-name"]);
   $.ajax({
     url: 'http://localhost:3000/reviews',
