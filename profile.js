@@ -25,6 +25,7 @@ function initialize(){
 function loadUser(profileObject){
 	console.log('profile loaded');
 	var accountName = (profileObject['name']);
+	localStorage['userName'] = JSON.stringify(accountName);
 	destroyLoginAddLogout(accountName);
 	//destroy input field
 
