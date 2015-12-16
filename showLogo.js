@@ -59,8 +59,8 @@ setInterval("rotateimage()",delay)
 
 $('#rbu').click(function(){
 	alert('Refresh, if you want Ads back');
-	$('#rad').hide();
-	$('#lad').hide();
+	$('#rad').empty();
+	$('#lad').empty();
 
 	})
 
