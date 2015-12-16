@@ -117,6 +117,7 @@ app.get("/profiles", function (req, res) {
 })
 
 app.post("/reviews", function (req, res) {
+  console.log("new post bitch");
   var newReview = req.body;
   var submitter = newReview[0];
   var img = newReview[1];
