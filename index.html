@@ -6,7 +6,11 @@
 </head>
 <body>
   <header>
-    <img class='mediumLogo' src='mainimg/logo1.png' alt='Spin Off logo'>
+    <video class='mediumLogo' autoplay loop>
+      <source src='mainimg/logoAni.mp4' type='video/mp4'/>'
+    </video>
+    <!--<img class='mediumLogo' src='mainimg/logo1.png' alt='Spin Off logo'>
+    -->
     <h1>SPIN OFF</h1>
     <form id='formstruct'>
       <p id='userToggle'>User Name:</p>
@@ -16,6 +20,7 @@
     </form>
 
   </header>
+
     <h2>Spin Off is a </h2>
 
     <form id='newReview'>
@@ -37,6 +42,22 @@
           <li><a href=""><img class='menuHyp' src="mainimg/twoli.png"></a></li>
           <li><a href=""><img class='menuHyp' src="mainimg/threeli.png"></a></li>
         </ul>
+
+    <div class='midArea'>
+      <div>
+      <!--  <object width="290" height="130"><param name="movie" value="http://www.wunderground.com/swf/pws_mini_rf_nc.swf?station=KWASEATT329&freq=&units=english&lang=EN" /><embed src="http://www.wunderground.com/swf/pws_mini_rf_nc.swf?station=KWASEATT329&freq=&units=english&lang=EN" type="application/x-shockwave-flash" width="290" height="130" /></object>
+      -->
+      </div>
+      <h2>Spin Off is a </h2>
+      <div id='menu' class='collapse'>
+        <h4>Menu</h4>
+          <ul>
+            <li><a href=""><img class='menuHyp' src="mainimg/oneli.png"></a></li>
+            <li><a href=""><img class='menuHyp' src="mainimg/twoli.png"></a></li>
+            <li><a href=""><img class='menuHyp' src="mainimg/threeli.png"></a></li>
+          </ul>
+      </div>
+
     </div>
 
   <main>
@@ -56,6 +77,9 @@
   </main>
 
   <footer>
+    <audio controls autoplay>
+      <source src='audio/downtown.mp3' type='audio/mp3'>
+    </audio>
     <button type="button2" id="rbu">Hide Ad</button>
   </footer>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.js'></script>
