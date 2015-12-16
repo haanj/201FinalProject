@@ -24,38 +24,38 @@ h1{
   font-family: Papyrus,fantasy;
   text-shadow: 8px 8px 12px #000000;
 }
-/*#userToggle{
-  margin-bottom: .1px;
-}*/
-
-form{
-  margin-top: 40px;
+#formstruct{
+  margin-top: 15px;
   margin-right: 40px;
 }
 button{
   height: 22px;
   width: 145px;
+  margin-bottom: 20px;
 }
 button:hover{
     background-color: red;
 }
+#user1{
+  margin-left: 53px;
+  border-style: solid;
+  background-color: #6495ED;
+  border-radius: 10px;
+  border-color: #6495ED;
+  }
 .mediumLogo {
   height: 100px;
   width: 100px;
   margin-top: 20px;
   margin-left: 20px;
-  position: fixed;
 }
 .midArea{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-#newReview{
- max-width: 10%;
-}
 h2{
-
+  text-align: left;
 }
 .navItem {
   display: inline-block;
@@ -103,7 +103,7 @@ article {
   font-size: 30px;
   font-family: monospace;
 }
-p{
+.userToggle{
   font-size: 20px;
   font-weight: bold;
 }
@@ -112,7 +112,11 @@ p{
   overflow: auto;
 }
 #menu{
-  direction: rtl;
+  width: 17%;
+  background-color: white;
+  height: 100%;
+  z-index: 12;
+  text-align: center;
 }
 .menuHyp {
   height: 20px;
