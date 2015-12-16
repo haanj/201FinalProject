@@ -42,6 +42,7 @@ function newPost(img, name) {
     contentType: "application/json; charset=UTF-8",
     complete: function(x, y) {
       console.log('done');
+      $('#newReview').off();
       startUp();
     }
   });
