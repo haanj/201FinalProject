@@ -80,11 +80,15 @@ function printReviews() {
     var comments = review.comments;
     var post = '';
     post += '<div class="reviewPost" id="post' + id + '">';
-    post +=   '<img class="reviewImg" src="'+ img +'">';
-    post +=   '<h3 class="reviewTitle">' + name +'</h3>';
-    post +=   '<p class="reviewSubmitter">Submitted by ' + usr + '</p>';
+    post +=   '<div class="reviewImgWrap">';
+    post +=     '<img class="reviewImg" src="'+ img +'">';
+    post +=   '</div>';
+    post +=   '<div class="reviewBlock">';
+    post +=     '<h3 class="reviewTitle">' + name +'</h3>';
+    post +=     '<p class="reviewSubmitter">Suggested by ' + usr + '</p>';
+    post +=   '</div>';
     post += '</div>';
-    post += '<button class="showHide" id="showHide' + id + '">Comments</button>'
+    post += '<button class="showHide" id="showHide' + id + '">View Comments</button>'
     post += '<div class="commentThread" id="commentThread' + id + '" style="display:none">';
     post += '<div class="allComments" id="allComments' + id + '">'
 
@@ -141,8 +145,8 @@ function refreshCommentThread(commentThreadId){
           var usr = comment.usr;
           var msg = comment.msg;
           post += '<div class="comment">';
-          post +=   '<h4 class="userComment">' + usr + ' says:</h4>';
           post +=   '<p class = "commentComment">' + msg + '</p>';
+          post +=   '<h4 class="userComment">-~' + usr + '</h4>';
           post += '</div>';
         })
       }
@@ -193,8 +197,8 @@ function stringComments(review) {
     var usr = comment.usr;
     var msg = comment.msg;
     post += '<div class="comment">';
-    post +=   '<h4 class="userComment">' + usr + ' says:</h4>';
     post +=   '<p class = "commentComment">' + msg + '</p>';
+    post +=   '<h4 class="userComment">-~' + usr + '</h4>';
     post += '</div>';
   })
 

@@ -1,0 +1,71 @@
+#subm {
+  background-color:rgba(255, 255, 255, 0.5);
+  padding: 1.5em;
+}
+
+.reviewPost {
+  display: flex;
+  justify-content: space-between;
+}
+
+.reviewImgWrap {
+  align-self: flex-start;
+}
+
+.reviewImg {
+  max-width: 100px;
+  margin: 1em;
+}
+
+.reviewBlock{
+  align-self: flex-end;
+  display: flex;
+  flex-direction: column;
+}
+
+.reviewTitle {
+  align-self: flex-end;
+  display: inline-block;
+  margin: 0;
+  font-size: 26px;
+}
+
+.reviewSubmitter {
+  align-self: flex-end;
+  margin: 0;
+  font-size: 16px;
+}
+
+.showHide {
+  display: block;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+}
+
+.showHide:hover{
+  background-color: rgba(70, 130, 180, 0.5);
+}
+
+
+.comment {
+  max-width: 500px;
+}
+
+.userComment {
+  font-size: 12px;
+  margin-top: 0;
+  margin-left: 5px;
+}
+
+.commentComment {
+  max-width: 100%;
+  font-size: 14px;
+  margin-bottom: 0;
+  word-wrap: break-word;
+}
+
+.newComment {
+  display: flex;
+  justify-content: center;
+}
