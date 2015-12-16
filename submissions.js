@@ -23,6 +23,7 @@ function updateComments(){
         if (review.id === newReview.id){
           if (newReview.comments.length > review.comments.length) {
             refreshCommentThread(review.id);
+            review.comments = newReview.comments;
           }
         }
       })
