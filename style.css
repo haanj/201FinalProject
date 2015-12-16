@@ -62,14 +62,15 @@ main {
   width: 17%;
   right: 0;
   position: fixed;
-
 }
+
 #rad img{
   height: 50vh;
   width: 17%;
   position: fixed;
 
 }
+
 #rbu{
   float: right;
 }
