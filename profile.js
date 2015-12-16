@@ -127,12 +127,12 @@ $('#formstruct').submit(function(event){
 });
 
 //listeners for our menu display 
-$('.menubutton').click(function() {
-    	$('.overlay').animate({width: 'toggle'});
+$('#menu').click(function() {
+    	$('#menu').show({width: 'toggle'});
 	});
 
-$('.backpage').click(function() {
-    	$('.overlay').animate({width: 'toggle'});
+$('#m1').click(function() {
+    	$('#menu').hide({width: 'toggle'});
 	});
 
 initialize();
