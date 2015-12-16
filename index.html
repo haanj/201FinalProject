@@ -6,7 +6,9 @@
 </head>
 <body>
   <header>
-    <img class='mediumLogo' src='mainimg/logo1.png' alt='Spin Off logo'>
+    <video class='mediumLogo' autoplay loop>
+      <source src='mainimg/logoAni.mp4' type='video/mp4'/>'
+    </video>
     <h1>SPIN OFF</h1>
     <form id='formstruct'>
       <p id='userToggle'>User Name:</p>
@@ -14,20 +16,32 @@
       <br>
       <button type="submit" id="submitUserName" class="profileButton">Login</button>
     </form>
-
   </header>
-    <h2>Spin Off is a </h2>
-    <form id='newReview'>
-     <fieldset>
-       <legend> Submit New Review! </legend>
-       <label for="imageAdd">Img URL </label>
-       <input type='text' name ='imgURL' id='inputIMG'>
-       <label for="titleAdd">Post title </label>
-       <input type='text' name='newTitle' id='inputTitle'>
-       <button type='submit' id='submitProduct'>Submit Form </button>
-     </fieldset>
-   </form>
-
+    <div class='midArea'>
+      <div>
+        <form id='newReview'>
+          <fieldset>
+            <legend> Submit New Review! </legend>
+            <label for="imageAdd">Img URL </label>
+            <input type='text' name ='imgURL' id='inputIMG'>
+            <label for="titleAdd">Post title </label>
+            <input type='text' name='newTitle' id='inputTitle'>
+            <button type='submit' id='submitProduct'>Submit Form </button>
+          </fieldset>
+        </form>
+      </div>
+      <div>
+        <h2>Spin Off is a </h2>
+      </div>
+      <div id='menu' class='collapse'>
+        <h4>Menu</h4>
+          <ul>
+            <li><a href=""><img class='menuHyp' src="mainimg/oneli.png"></a></li>
+            <li><a href=""><img class='menuHyp' src="mainimg/twoli.png"></a></li>
+            <li><a href=""><img class='menuHyp' src="mainimg/threeli.png"></a></li>
+          </ul>
+      </div>
+    </div>
   <main>
     <aside id='rad'>
       ad1
@@ -45,6 +59,9 @@
   </main>
 
   <footer>
+    <audio controls autoplay>
+      <source src='audio/downtown.mp3' type='audio/mp3'>
+    </audio>
     <button type="button2" id="rbu">Hide Ad</button>
   </footer>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.js'></script>

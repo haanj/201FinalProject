@@ -20,34 +20,47 @@ h1{
   font-size: 100px;
   margin:5px 5px 5px 5px;
   color: #336699;
+  font-style: italic;
+  font-family: Papyrus,fantasy;
+  text-shadow: 8px 8px 12px #000000;
 }
+/*#userToggle{
+  margin-bottom: .1px;
+}*/
 
 form{
   margin-top: 40px;
   margin-right: 40px;
 }
-
 button{
   height: 22px;
   width: 145px;
 }
-
+button:hover{
+    background-color: red;
+}
 .mediumLogo {
   height: 100px;
   width: 100px;
   margin-top: 20px;
   margin-left: 20px;
+  position: fixed;
 }
-
+.midArea{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#newReview{
+ max-width: 10%;
+}
 h2{
-  text-align: center;
-}
 
+}
 .navItem {
   display: inline-block;
   padding: 2em;
 }
-
 main {
   display: flex;
   flex-direction: row;
@@ -56,34 +69,52 @@ main {
   max-width: 100%;
   min-height: 25em;
 }
-
+#subm{
+  margin-left: auto;
+  margin-right: auto;
+}
 #lad img {
   height: 50vh;
   width: 17%;
   right: 0;
   position: fixed;
+  background-color: white;
+  opacity: .50;
+}
+#lad img:hover{
+  opacity: 1.0;
 }
 
 #rad img{
   height: 50vh;
   width: 17%;
   position: fixed;
-
+  background-color: white;
+  opacity: .50;
+}
+#rad img:hover{
+  opacity: 1.0;
 }
 
 #rbu{
   float: right;
 }
-
 article {
-  font-size: 50px;
-}
-
-p{
   font-size: 30px;
+  font-family: monospace;
 }
-
+p{
+  font-size: 20px;
+  font-weight: bold;
+}
 .allComments {
   height: 200px;
   overflow: auto;
+}
+#menu{
+  direction: rtl;
+}
+.menuHyp {
+  height: 20px;
+  width: 20px;
 }
