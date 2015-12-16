@@ -3,7 +3,7 @@ var profileArray = [];
 //var form = document.getElementById('formstruct');
 
 //Profile constructor with applicable key, value pairs for recording what the user has voted on
-//and what the user has posted themselves or commented on. Also a way to store thier avatar image
+//and what the user has submitted or commented on. Also a way to store thier avatar image
 function Profile (name){
 	this.name = name;
 	this.itemsVoted = [];
@@ -92,34 +92,46 @@ function destroyLoginAddLogout(name){
 
 function destroyLogoutAddLogin(){
 	console.log('Button changed to Login');
+	localStorage.clear();
 	$('.profileButton').text('Login');
 	$('#inputID').show();
 	$('#userToggle').text('Username:')
 
+
 }
-
-	$('#formstruct').submit(function(event){
-		console.log('You clicked the button')
-		var checkButtonStatus = $('.profileButton').html();
-		console.log('html value: ' + checkButtonStatus);
-		if(checkButtonStatus === 'Login'){
-			event.preventDefault();
-			console.log('the html value matched "Login" ');
-			checkUserExistence(event);
-		}
-		else if(checkButtonStatus === 'Logout'){
-			event.preventDefault();
-			console.log('the html value matched "Logout"');
-			destroyLogoutAddLogin();
-		}
-		else{
-			console.log('the html value did not match');
-		}
-	});
-
 //here is where we update our users profile every time they make a vote, or create something new
-// toreflect the changes
+// to reflect the changes
 function updateProfile(key, value){
 
 }
+
+//listener for our login button
+$('#formstruct').submit(function(event){
+	console.log('You clicked the button')
+	var checkButtonStatus = $('.profileButton').html();
+	console.log('html value: ' + checkButtonStatus);
+	if(checkButtonStatus === 'Login'){
+		event.preventDefault();
+		console.log('the html value matched "Login" ');
+		checkUserExistence(event);
+	}
+	else if(checkButtonStatus === 'Logout'){
+		event.preventDefault();
+		console.log('the html value matched "Logout"');
+		destroyLogoutAddLogin();
+	}
+	else{
+		console.log('the html value did not match');
+	}
+});
+
+//listeners for our menu display 
+$('.menubutton').click(function() {
+    	$('.overlay').animate({width: 'toggle'});
+	});
+
+$('.backpage').click(function() {
+    	$('.overlay').animate({width: 'toggle'});
+	});
+
 initialize();
