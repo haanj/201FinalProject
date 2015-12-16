@@ -1,0 +1,54 @@
+#subm {
+  background-color:rgba(255, 255, 255, 0.5);
+  padding: 1.5em;
+}
+
+.reviewImg {
+  max-width: 100px;
+  margin: 1em;
+  display: inline-block;
+}
+
+.reviewTitle {
+  display: inline-block;
+  margin: 0;
+}
+
+.reviewSubmitter {
+  text-align: right;
+  margin: 0;
+}
+
+.showHide {
+  display: block;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+}
+
+.showHide:hover{
+  background-color: rgba(70, 130, 180, 0.5);
+}
+
+
+.comment {
+  max-width: 500px;
+}
+
+.userComment {
+  font-size: 12px;
+  margin-top: 0;
+  margin-left: 5px;
+}
+
+.commentComment {
+  max-width: 100%;
+  font-size: 14px;
+  margin-bottom: 0;
+  word-wrap: break-word;
+}
+
+.newComment {
+  display: flex;
+  justify-content: center;
+}
