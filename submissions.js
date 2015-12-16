@@ -100,12 +100,10 @@ function printReviews() {
   $newComment = $('.newComment');
   $newComment.submit(function (event){
     event.preventDefault();
-    console.log(event.target.userName.value + ": " + event.target.commentField.value);
-    console.log(event.target.name);
     // Gets necessary information from fields to add new comment
     if(!localStorage["userName"])
       {
-        alert ("You need to log in first!");
+        var newName = "anonymous";
       } else {
         var newName = JSON.parse(localStorage["userName"]);
       }
@@ -202,7 +200,6 @@ function stringComments(review) {
 
   post += '</div>'
   post += '<form action class="newComment" name="newComment' + id + '">';
-  post +=   '<input type="text" name="userName" value="username">';
   post +=   '<input type="text" name="commentField" value="comment blah blah blah">';
   post +=   '<input type="submit" value="Comment">';
   post += '</form>';
