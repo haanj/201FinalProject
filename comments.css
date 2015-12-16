@@ -3,20 +3,37 @@
   padding: 1.5em;
 }
 
+.reviewPost {
+  display: flex;
+  justify-content: space-between;
+}
+
+.reviewImgWrap {
+  align-self: flex-start;
+}
+
 .reviewImg {
   max-width: 100px;
   margin: 1em;
-  display: inline-block;
+}
+
+.reviewBlock{
+  align-self: flex-end;
+  display: flex;
+  flex-direction: column;
 }
 
 .reviewTitle {
+  align-self: flex-end;
   display: inline-block;
   margin: 0;
+  font-size: 26px;
 }
 
 .reviewSubmitter {
-  text-align: right;
+  align-self: flex-end;
   margin: 0;
+  font-size: 16px;
 }
 
 .showHide {
