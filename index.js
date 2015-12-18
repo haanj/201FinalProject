@@ -25,67 +25,27 @@ app.use(function(req, res, next){
  next()
 });
 
-var counter = 3;
+var counter = 1;
 
 var db = {
   reviews: [
     {
       id: 0,
-      img: 'mainimg/logo1.png',
-      name: "Awesome cat scratcher!",
-      usr: "catLady420",
+      img: 'http://i.imgur.com/FTh6QtS.jpg',
+      name: "Brouwer's Cafe",
+      usr: "xxBeerRangerxx",
       uvotes: 5,
       dvotes: 2,
       comments: [
         {
           id: 0,
-          usr: "catscats!",
-          msg: "This rocks! A++"
+          usr: "drunksalot",
+          msg: "This place rocks! A++"
         },
         {
           id: 1,
-          usr: "dogsdogs!",
-          msg: "get a dog!"
-        }
-      ]
-    },
-    {
-      id: 1,
-      img: 'mainimg/logo1.png',
-      name: "Dog food!",
-      usr: "dogsRule",
-      uvotes: 3,
-      dvotes: 1,
-      comments: [
-        {
-          id: 0,
-          usr: "catscats!",
-          msg: "This rocks! A++"
-        },
-        {
-          id: 1,
-          usr: "dogsdogs!",
-          msg: "get a dog!"
-        }
-      ]
-    },
-    {
-      id: 2,
-      img: 'mainimg/logo1.png',
-      name: "Holy water",
-      usr: "Blah",
-      uvotes: 10,
-      dvotes: 1,
-      comments: [
-        {
-          id: 0,
-          usr: "catscats!",
-          msg: "This rocks! A++"
-        },
-        {
-          id: 1,
-          usr: "dogsdogs!",
-          msg: "get a dog!"
+          usr: "gothdetective1",
+          msg: "it's alright"
         }
       ]
     }
