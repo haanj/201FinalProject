@@ -43,6 +43,9 @@ button:hover{
   border-radius: 10px;
   border-color: #6495ED;
   }
+  #noButton{
+    list-style: none;
+  }
 .mediumLogo {
   height: 100px;
   width: 100px;
