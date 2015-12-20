@@ -111,5 +111,5 @@ app.post("/profiles", function (req, res){
 })
 
 app.listen(3000, function(){
-  console.log("Wubba Lubba Dub Dub");
+  console.log("Listening at port 3000");
 });
