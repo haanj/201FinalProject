@@ -113,7 +113,7 @@ function printReviews() {
       }
     var newComment = event.target.commentField.value;
     var newId = Number(event.target.name.slice(10)); //ID of the corresponding product comment thread
-
+    event.target.commentField.value = "";
     //calls function to add new comment
     addComment(newId, newName, newComment);
   })
@@ -204,7 +204,7 @@ function stringComments(review) {
 
   post += '</div>'
   post += '<form action class="newComment" name="newComment' + id + '">';
-  post +=   '<input type="text" name="commentField" value="comment blah blah blah">';
+  post +=   '<input type="text" name="commentField">';
   post +=   '<input type="submit" value="Comment">';
   post += '</form>';
   post += '</div>';
@@ -219,6 +219,8 @@ function startUp() {
   $('#newReview').submit(function (event){
     event.preventDefault();
     newPost(event.target.imgURL.value, event.target.newTitle.value);
+    event.target.imgURL.value = "";
+    event.target.newTitle.value = "";
   })
 
 }
